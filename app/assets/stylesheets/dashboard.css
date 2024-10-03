@@ -1,0 +1,68 @@
+.dashboards {
+    display: flex;
+ 
+  
+}
+.ezra-sidebar {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    padding-top: 50px;
+    height: 100vh;
+    gap: 20px;
+  
+}
+.ezra-content {
+    background-color: silver;
+    width: 80%;
+}
+.ezra-main-content {
+    padding: 2%;
+}
+  /* Style for the sidebar links */
+.ezra-sidebar a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff; /* Dark gray text color */
+    text-decoration: none;
+
+}
+  /* Hover effect for sidebar links */
+.ezra-sidebar a:hover {
+    background-color: #e9ecef;
+    text-decoration: none; /* Light gray hover background */
+}
+.dashboards {
+    display: flex;
+    
+
+}
+.logouts {
+    margin-right: 37px;
+    display: none;
+}
+.dashboard-content {
+
+}
+
+.ezra-box {
+    display: flex;
+    gap: 8px;
+    border-radius: 8px;
+}
+
+.nav-3 {
+    background-color: #e9ecef;
+}
+.icon-cont {
+    background-color: rgb(53, 53, 53);
+    padding: 15px;
+    border-radius: 8px;
+    
+}
+
+.ezra-table-container {
+    width: 100%;
+    margin: 2%;
+}

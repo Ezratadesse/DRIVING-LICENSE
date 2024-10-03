@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment Form</title>
+</head>
+<body class="form-body">
+
+<section class="my-container">
+  <%= form_with(model: @application, url: students_applications_path, local: true, html: { class: 'studentsForm' }) do |form| %>
+    <h1>Enrollment Form</h1>
+    
+    <% if @application.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+        <ul>
+          <% @application.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group <%= 'has-error' if @application.errors[:FirstName].any? %>">
+          <%= form.label :FirstName %>
+          <%= form.text_field :FirstName, class: 'form-control', autofocus: true %>
+          <% if @application.errors[:FirstName].any? %>
+            <span class="error-message"><%= @application.errors[:FirstName].first %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group <%= 'has-error' if @application.errors[:LastName].any? %>">
+          <%= form.label :LastName %>
+          <%= form.text_field :LastName, class: 'form-control' %>
+          <% if @application.errors[:LastName].any? %>
+            <span class="error-message"><%= @application.errors[:LastName].first %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group <%= 'has-error' if @application.errors[:middle_name].any? %>">
+          <%= form.label :middle_name %>
+          <%= form.text_field :middle_name, class: 'form-control' %>
+          <% if @application.errors[:middle_name].any? %>
+            <span class="error-message"><%= @application.errors[:middle_name].first %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group <%= 'has-error' if @application.errors[:phone_number].any? %>">
+          <%= form.label :phone_number %>
+          <%= form.text_field :phone_number, class: 'form-control' %>
+          <% if @application.errors[:phone_number].any? %>
+            <span class="error-message"><%= @application.errors[:phone_number].first %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group <%= 'has-error' if @application.errors[:address].any? %>">
+          <%= form.label :address %>
+          <%= form.text_field :address, class: 'form-control' %>
+          <% if @application.errors[:address].any? %>
+            <span class="error-message"><%= @application.errors[:address].first %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group <%= 'has-error' if @application.errors[:city].any? %>">
+          <%= form.label :city %>
+          <%= form.text_field :city, class: 'form-control' %>
+          <% if @application.errors[:city].any? %>
+            <span class="error-message"><%= @application.errors[:city].first %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @application.errors[:gender].any? %>">
+      <%= form.label :gender %>
+      <%= form.select :gender, ['Male', 'Female'], {prompt: "Select Gender"}, class: 'form-control' %>
+      <% if @application.errors[:gender].any? %>
+        <span class="error-message"><%= @application.errors[:gender].first %></span>
+      <% end %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @application.errors[:birthday].any? %>">
+      <%= form.label :birthday %>
+      <%= form.date_field :birthday, class: 'form-control' %>
+      <% if @application.errors[:birthday].any? %>
+        <span class="error-message"><%= @application.errors[:birthday].first %></span>
+      <% end %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @application.errors[:category].any? %>">
+      <%= form.label :category %>
+      <%= form.select :category, ['Motorcycle', 'Automobile', 'Taxi T-1', 'Taxi T-2', "Public P-1", "Public P-2", "Truck D1", "Truck D2", "Truck D3", "Tanker F1", "Tanker F2"], {prompt: "Select Category"}, class: 'form-control' %>
+      <% if @application.errors[:category].any? %>
+        <span class="error-message"><%= @application.errors[:category].first %></span>
+      <% end %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if @application.errors[:school_id].any? %>">
+      <%= form.label :school_id, "Choose School" %>
+      <%= form.collection_select :school_id, School.all, :id, :name, {prompt: "Select School"}, class: 'form-control' %>
+      <% if @application.errors[:school_id].any? %>
+        <span class="error-message"><%= @application.errors[:school_id].first %></span>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :Medical_Paper %>
+      <%= form.file_field :image, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Submit Enrollment", class: 'btn btn-primary' %>
+    </div>
+
+  <% end %>
+</section>
+
+</body>
+</html>

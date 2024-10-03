@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+
+</head>
+<body class = "form-body">
+
+
+  <section class="sign-up-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'needs-validation signupforms' }) do |f| %>
+      <h2 class="text-center mb-4">Sign up</h2>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :email, class: 'form-label' %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: 'form-label' %>
+        <% if @minimum_password_length %>
+        <small class="form-text text-muted">(<%= @minimum_password_length %> characters minimum)</small>
+        <% end %>
+        <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: 'form-label' %>
+        <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-group text-center">
+        <%= f.submit "Sign up", class: 'btn btn-primary btn-lg btn-block' %>
+      </div>
+      <div class="text-center mt-3">
+        <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
+      </div>
+    <% end %>
+
+  </section>
+  
+
+
+  <!-- You can include your JavaScript here -->
+  <script src="path/to/your/scripts.js"></script>
+</body>
+</html>

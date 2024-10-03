@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 303030
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: bash -c "./bin/rails server -b 0.0.0.0"
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      SECRET_KEY_BASE: 709c1718c6b1a5f1c6a0fb6fe026c457d570a3207b6da7694229c00afdcdab02a6f7cb27e916f695a7758aeb8cbbac5df29d15fd96dd224199e5116222e2ccdf
+      DATABASE_URL: postgres://postgres:303030@db:5432/postgres
+
+volumes:
+  pgdata:
